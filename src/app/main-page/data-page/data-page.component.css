@@ -1,0 +1,32 @@
+agm-map {
+  height: 300px;
+}
+
+table {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  box-sizing: border-box;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+/* tr  {
+  background-color: #e0e0e0;
+  box-shadow: 3px 5px 10px grey;
+} */
+
+.outer_col {
+  border: none;
+}
+table,
+th,
+td {
+  border-collapse: collapse;
+}
+.fixed_header {
+  width: 400px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}

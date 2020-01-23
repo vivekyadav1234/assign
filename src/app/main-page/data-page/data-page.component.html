@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-12 ml-2" style="display: contents;">
+      <select
+        class="ml-4 form-control capitalize mt-4 mb-5 col-5 addCursor"
+        (change)="getVariablePriceForCM($event.target.value)"
+      >
+        <option disabled value="">Choose State</option>
+        <option *ngFor="let obj of this.city_data" value="{{ obj.District }}">{{
+          obj.State
+        }}</option>
+      </select>
+      <div class="pull-right d-flax mt-4" style="display: flex;">
+        <input
+          class="form-control ml-3"
+          type="text"
+          placeholder="Type something..."
+          id="myInput"
+        />
+        <button
+          class="btn ml-3"
+          type="button"
+          (click)="getInputValue()"
+          style="display: flex;
+          margin-bottom: 3.5rem; background-color: brown;color: white;border-radius: 5px"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      <div class="tableDiv ">
+        <div
+          class="table-responsive"
+          style="overflow-y: scroll;
+        height: 322px!important;"
+        >
+          <table class="table ml-4">
+            <thead
+              class="fixed_header"
+              style="background-color: #e0e0e0;
+            box-shadow: 5px 1px 8px grey;"
+            >
+              <tr>
+                <th scope="col" class="firstTh">#</th>
+                <th scope="col">City</th>
+                <th class="lastTh">District</th>
+              </tr>
+            </thead>
+            <tbody lass="ss-tbody">
+              <tr
+                *ngFor="let obj of state_data; let i = index"
+                [attr.data-index]="i"
+              >
+                <td style="min-width: 1rem;">{{ i + 1 }}</td>
+                <td>{{ obj.City }}</td>
+                <td>{{ obj.District }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+    <div>
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
