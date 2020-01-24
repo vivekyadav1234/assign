@@ -51,20 +51,35 @@ export class DataPageComponent implements OnInit {
   test;
   lat;
   lng;
+  currLat;
+  currLng;
   getLocation(locationValue) {
-    this.lat = 18.987807;
-    this.lng = 72.836447;
-    console.log(locationValue, "locationValue");
-    // });
-    // var autocomplete = new google.maps.places.Autocomplete();
-    // google.maps.event.addListener(autocomplete, "place_changed", function() {
-    //   var place = autocomplete.getPlace();
-    //   console.log(locationValue, "vivek");
-    //   locationValue = place.name;
-    //   locationValue = place.geometry.location.lat();
-    //   locationValue = place.geometry.location.lng();
-    //   console.log(location);
-    // });
+    this.heroService.getLocation(locationValue).subscribe(
+      res => {
+        this.test = res;
+        console.log(this.test.status);
+        if (this.test.status === "REQUEST_DENIED") {
+          this.currLat = 17.38714;
+          this.currLng = 78.491684;
+          alert(this.test.error_message);
+        } else {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+              this.currLat = position.coords.latitude;
+              this.currLng = position.coords.longitude;
+              console.log(this.currLng, "this.currLng");
+            });
+          } else {
+            alert("You must enable Billing on the Google Cloud Project!");
+          }
+          this.lat = this.currLat;
+          this.lng = this.currLng;
+          console.log(this.lng, "this.lng");
+          console.log(locationValue, "locationValue");
+        }
+      },
+      error => {}
+    );
   }
   getInputValue() {
     var inputValue = (<HTMLInputElement>document.getElementById("myInput"))
@@ -77,5 +92,8 @@ export class DataPageComponent implements OnInit {
       },
       error => {}
     );
+  }
+  openModal() {
+    document.getElementById("MyModal").style.display = "block";
   }
 }

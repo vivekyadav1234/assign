@@ -30,9 +30,11 @@ export class HeroService {
       params: params2
     });
   }
-  // getLocation() {
-  //   return this.http.get<Location>(
-  //     "https://api.ipapi.com/api/check?access_key=5d1c52d2a6c92e4d2a1d1a8bfd8d699f"
-  //   );
-  // }
+  getLocation(Location) {
+    let params3 = new HttpParams().set("address", Location);
+    // let params3 = new HttpParams().set("key",'AIzaSyArpJCJZM2zQ4NTB0Qh09RNlgOrUOP86Jo');
+    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json", {
+      params: params3
+    });
+  }
 }

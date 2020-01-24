@@ -1,14 +1,16 @@
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col-md-12 ml-2" style="display: contents;">
+    <div class="col-md-12 col-lg-12  ml-2" style="display: contents;">
       <select
         class="ml-4 form-control capitalize mt-4 mb-5 col-5 addCursor"
         (change)="getVariablePriceForCM($event.target.value)"
       >
         <option disabled value="">Choose State</option>
-        <option *ngFor="let obj of this.city_data" value="{{ obj.District }}">{{
-          obj.State
-        }}</option>
+        <option
+          *ngFor="let obj of city_data; let i = index"
+          value="{{ obj.District }}"
+          >{{ obj.State }}</option
+        >
       </select>
       <div class="pull-right d-flax mt-4" style="display: flex;">
         <input
@@ -27,6 +29,22 @@
           Search
         </button>
       </div>
+      <button
+        class="btn mt-3 pull-right"
+        type="button"
+        data-toggle="modal"
+        data-target="#MyModal"
+        (click)="openModal()"
+        style="display: flex;
+          margin-left: 24.5rem !important; background-color: brown;color: white;border-radius: 5px;height: 36px;"
+      >
+        <a
+          style="color: white"
+          href="https://docs.google.com/document/d/1X0LMwMM3Z6BfQvzfi5mGMhcU4H2YHjamsxerTcQh1kU/edit?usp=sharing"
+          target="_blank"
+          >Work Flow</a
+        >
+      </button>
     </div>
   </div>
   <div class="row mt-5">
@@ -64,12 +82,35 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <agm-map [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-map [latitude]="currLat" [longitude]="currLng">
+        <agm-marker [latitude]="currLat" [longitude]="currLng"></agm-marker>
       </agm-map>
     </div>
     <div>
       <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="MyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+      </div>
     </div>
   </div>
 </div>

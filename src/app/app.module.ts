@@ -16,7 +16,7 @@ import { AgmCoreModule } from "@agm/core";
     NgbModule.forRoot(),
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyDs1Szaf2Ur_wqtg4g8pdLUBTbuhKTXo-k"
+      apiKey: "AIzaSyC80kz3pNYbXNhwMdoBh4uQG31KznEuYEY"
     })
     // apiKey:'Madathukulam',
   ],
