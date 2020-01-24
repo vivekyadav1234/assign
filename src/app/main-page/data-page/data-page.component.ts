@@ -59,8 +59,8 @@ export class DataPageComponent implements OnInit {
         this.test = res;
         console.log(this.test.status);
         if (this.test.status === "REQUEST_DENIED") {
-          this.currLat = 17.38714;
-          this.currLng = 78.491684;
+          this.currLat = 34.083656;
+          this.currLng = 74.797371;
           alert(this.test.error_message);
         } else {
           if (navigator.geolocation) {
